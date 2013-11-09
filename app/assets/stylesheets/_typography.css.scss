@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'UbuntuRegular';
+    src: url('Ubuntu-R-webfont.eot');
+    src: url('Ubuntu-R-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Ubuntu-R-webfont.woff') format('woff'),
+         url('Ubuntu-R-webfont.ttf') format('truetype'),
+         url('Ubuntu-R-webfont.svg#UbuntuRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'UbuntuRegular';
+    src: url('Ubuntu-LI-webfont.eot');
+    src: url('Ubuntu-LI-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Ubuntu-LI-webfont.woff') format('woff'),
+         url('Ubuntu-LI-webfont.ttf') format('truetype'),
+         url('Ubuntu-LI-webfont.svg#UbuntuRegular') format('svg');
+    font-weight: normal;
+    font-style: italic;
+
+}
+
+@font-face {
+    font-family: 'UbuntuMedium';
+    src: url('Ubuntu-M-webfont.eot');
+    src: url('Ubuntu-M-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Ubuntu-M-webfont.woff') format('woff'),
+         url('Ubuntu-M-webfont.ttf') format('truetype'),
+         url('Ubuntu-M-webfont.svg#UbuntuMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'cubanoregular';
+    src: url('cubano-regular-webfont.eot');
+    src: url('cubano-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('cubano-regular-webfont.woff') format('woff'),
+         url('cubano-regular-webfont.ttf') format('truetype'),
+         url('cubano-regular-webfont.svg#cubanoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.font-cubano {
+  font-family: "cubanoregular", sans-serif;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.font-ubuntu {
+  font-family: "UbuntuRegular", sans-serif;
+  text-transform: none;
+  font-weight: normal;
+}
+
+.font-ubuntuMedium {
+  font-family: "UbuntuMedium", sans-serif;
+  text-transform: none;
+  font-weight: normal;
+}
+
+body {
+  @extend .font-ubuntu;
+  @include font-smoothing(antialiased);
+  line-height: 1.4em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend .font-ubuntuMedium;
+  font-size: 2em;
+  margin-bottom: 0.25em;
+  margin: 1em 0;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: $orange;
+}
+
+p {
+  small, &.meta {
+    color: $navy-lighter;
+    font-size: 0.8em;
+  }
+}
+
+em {
+  font-style: italic;
+  color: $gray-dark;
+}
+
+blockquote {
+  margin: 20px 0;
+  border-left: 4px solid $gray;
+  padding-left: 20px;
+  color: $gray-dark;
+}
+
+code, pre {
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  margin: 0 2px;
+  padding: 0px 5px;
+  border: 1px solid $gray;
+  background-color: $gray-light;
+  border-radius: 3px;
+}
+
+pre {
+  margin: 20px 0;
+  padding: 10px 15px;
+  overflow: scroll
+}

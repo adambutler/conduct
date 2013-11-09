@@ -1,0 +1,80 @@
+.topics {
+  @extend .clearfix;
+  color: $navy-light;
+
+  > li {
+    @extend .clearfix;
+    width: 50%;
+    float: left;
+
+    .topic-body {
+      @include border-radius;
+      border: 1px solid $gray-lighter;
+      padding: 20px;
+      margin: 10px;
+      height: 150px;
+    }
+
+    &:nth-child(odd) {
+      .topic-body {
+        margin-left: 0;
+      }
+    }
+
+    &:nth-child(even) {
+      .topic-body {
+        margin-right: 0;
+      }
+    }
+
+    @include breakpoint($xl) {
+      width: 33%;
+
+      .topic-body {
+        margin: 10px;
+        &:nth-child(odd), &:nth-child(even) {
+          margin: 10px;
+        }
+      }
+
+      &:nth-child(3n + 1) {
+        .topic-body {
+          margin-left: 0;
+        }
+      }
+
+      &:nth-child(3n + 3) {
+        .topic-body {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    small, &.meta {
+      font-size: 12px;
+      color: lighten($navy-lighter, 15%);
+    }
+  }
+}
+
+.topic-stats {
+  @extend .clearfix;
+  > li {
+    @extend .votebox;
+    @include border-radius;
+    background: $orange;
+    padding: 10px;
+    height: auto;
+    width: auto;
+  }
+}

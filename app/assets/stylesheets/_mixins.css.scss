@@ -1,0 +1,56 @@
+@mixin prefixer($name, $argument) {
+  #{$name}: $argument;
+  -webkit-#{$name}: $argument;
+  -ms-#{$name}: $argument;
+  -moz-#{$name}: $argument;
+  -o-#{$name}: $argument;
+}
+
+@mixin font-smoothing($value) {
+  @include prefixer(font-smoothing, $value)
+}
+
+@mixin depth($color, $depth) {
+  $all: ();
+  @for $i from 1 through $depth {
+    $all: append($all, append(0 $i*1px $i*0.75px, darken($color, $i+14%)), comma);
+  }
+  box-shadow: $all
+}
+
+@mixin breakpoint($width, $reverse: false) {
+  @if $reverse {
+    @media (max-width: ($width + 1) ) { @content; }
+  } @else {
+    @media (min-width: $width) { @content; }
+  }
+}
+
+
+@mixin triangle($width, $dir, $color) {
+  @if $dir == up {
+    width: 0;
+    height: 0;
+    border-left: $width/2 solid transparent;
+    border-right: $width/2 solid transparent;
+    border-bottom: $width/2 solid $color;
+  } @else if $dir == down {
+    width: 0;
+    height: 0;
+    border-left: $width/2 solid transparent;
+    border-right: $width/2 solid transparent;
+    border-top: $width/2 solid $color;
+  } @else if $dir == right {
+    width: 0;
+    height: 0;
+    border-top: $width solid transparent;
+    border-bottom: $width solid transparent;
+    border-left: $width solid $color;
+  } @else if $dir == left {
+    width: 0;
+    height: 0;
+    border-top: $width solid transparent;
+    border-bottom: $width solid transparent;
+    border-right: $width solid $color;
+  }
+}

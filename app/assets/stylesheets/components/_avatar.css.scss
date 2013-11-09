@@ -1,0 +1,10 @@
+.avatar {
+  display: block;
+  width: 60px;
+  height: 60px;
+
+  &.small {
+    width: 48px;
+    height: 48px;
+  }
+}

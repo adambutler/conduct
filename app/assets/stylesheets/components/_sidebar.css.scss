@@ -1,0 +1,30 @@
+.sidebar {
+
+  li {
+    border-left: 4px solid $gray-light;
+    padding-left: 20px;
+    margin-bottom: 20px;
+
+    canvas {
+      position: relative;
+      left: -15px;
+    }
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+
+.sidebar-item-new-idea {
+
+  input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    height: 80px;
+  }
+}

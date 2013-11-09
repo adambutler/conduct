@@ -1,0 +1,20 @@
+.features {
+  text-align: center;
+  > h1 {
+    margin: 20px;
+  }
+  .span4 {
+    height: 300px;
+    margin-bottom: 20px;
+    .icon-container {
+      height: 155px;
+      margin-bottom: 20px;
+      .icon {
+        margin: auto;
+      }
+    }
+    p {
+      margin: 0 40px;
+    }
+  }
+}

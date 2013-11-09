@@ -1,0 +1,26 @@
+.row {
+  @extend .clearfix;
+  margin-left: -20px;
+}
+
+[class*="span"] {
+  float: left;
+  margin-left: 20px;
+  &.pull-right { float: right; }
+}
+
+@for $i from 1 through 12 {
+  .span#{$i} {
+    width: ($i*60px)+(($i - 1)*20px);
+  }
+}
+
+.row-fluid {
+  .column-left {
+    margin-right: 340px;
+  }
+
+  .column-right {
+    width: 320px; float: right;
+  }
+}

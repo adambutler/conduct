@@ -1,0 +1,25 @@
+.flash, #flash_notice, #flash_alert {
+  @include border-radius;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  width: 460px;
+  margin-bottom: 20px;
+  color: $white;
+}
+
+.flash-alert, #flash_alert {
+  @include depth($red, 5);
+  background: $red;
+}
+
+.flash-notice, #flash_notice {
+  @include depth($green, 5);
+  background: $green;
+}
+
+.flash-white {
+  @include depth($gray-lighter, 5);
+  background: $gray-lighter;
+  color: $gray-dark;
+}

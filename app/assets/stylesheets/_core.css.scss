@@ -1,0 +1,86 @@
+.clearfix {
+  @include clearfix;
+}
+
+.hide {
+  display: none;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  background: $white;
+  color: $navy;
+
+  &.foh {
+    background: $orange;
+    color: $white;
+  }
+}
+
+.container {
+  width: 940px;
+  margin: auto;
+}
+
+.body {
+  width: auto;
+  margin: 0 20px;
+
+  .foh & {
+    margin: 0;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.page-header {
+  position: relative;
+  padding-bottom: 15px;
+  border-bottom: 1px solid $gray-light;
+  margin-bottom: 15px;
+  .labels {
+    @include position(absolute, 0px 0px 0 0);
+  }
+}
+
+hr {
+  height: 0;
+  margin: 20px 0;
+  border: 0;
+  border-bottom: 1px solid $gray-lighter;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.text-spacious {
+  padding: 20px;
+}
+
+.link-subtle {
+  color: mix($orange, $white);
+  border-bottom: 1px dotted mix($orange, $white);
+  &:hover{
+    color: $white;
+  }
+}
+
+ul, ol {
+  padding-left: 20px;
+  margin: 20px 0;
+  ul, ol {
+    margin: 2px 0;
+  }
+}
+
+ol {
+  list-style: decimal;
+}
+
+ul {
+  list-style: square;
+}

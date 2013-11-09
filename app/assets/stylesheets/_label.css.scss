@@ -1,0 +1,13 @@
+.label, a.label {
+  @include border-radius;
+  @extend .font-ubuntuMedium;
+  color: $white;
+  padding: 5px 10px;
+  background: $gray-dark;
+  &.label-success {
+    background: $green;
+  }
+  &.label-error {
+    background: $red;
+  }
+}

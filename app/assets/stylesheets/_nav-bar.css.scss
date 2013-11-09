@@ -1,0 +1,19 @@
+.nav-bar {
+  position: relative;
+  background: $navy;
+  color: $white;
+  a { color: #aeb6bf; }
+  line-height: 37px;
+
+  .logo {
+    @include position(absolute, 0px auto 0px 0px);
+    @extend .font-cubano;
+    padding: 0 10px;
+    background: $orange;
+  }
+
+  .avatar {
+    @include border-radius;
+    @include position(absolute, 3px 3px 2px auto);
+  }
+}

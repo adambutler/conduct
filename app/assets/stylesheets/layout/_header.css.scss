@@ -1,0 +1,112 @@
+header.main {
+  @extend .clearfix;
+  z-index: 1;
+  overflow: visible;
+  position: relative;
+  text-align: left;
+  line-height: 50px;
+  background: $navy;
+  margin-bottom: 20px;
+  height: 58px;
+  color: $white;
+
+  .foh & {
+    text-align: center;
+    height: auto;
+  }
+
+  h1 {
+    @extend .font-cubano;
+    background: $orange;
+    font-size: 30px;
+    float: left;
+    margin: 0 20px 0 0;
+    line-height: 58px;
+    padding: 0 20px;
+    color: $white;
+
+    .foh & {
+      float: none;
+      font-size: 120px;
+      margin: 0;
+      margin-bottom: 0px;
+      line-height: 120px;
+    }
+
+    small {
+      @extend .font-ubuntuMedium;
+      font-size: 28px;
+      line-height: 28px;
+      display: none;
+      .foh & {
+        display: block;
+      }
+    }
+  }
+
+  nav {
+    float: left;
+    line-height: 58px;
+
+    span, a {
+      display: inline-block;
+      padding: 0 10px;
+      line-height: 35px;
+      @include border-radius;
+    }
+
+    span {
+      color: $white;
+    }
+
+    a {
+      color: mix($white, $navy);
+    }
+  }
+
+  .user {
+    @include position(absolute, 0px 0px 0px auto);
+  
+    .avatar {
+      @include position(absolute, 5px 5px auto auto);
+      @include border-radius;
+    }
+
+    .dropdown {
+      &:before {
+        content: " ";
+        display: block;
+        @include triangle(20px, up, $orange);
+        @include position(-10px -90px auto auto);
+      }
+      
+      @include transition(all 150ms ease-in-out);
+      @include border-radius(2px);
+
+      background: $orange;
+      visibility: hidden;
+      opacity: 0;
+      margin-top: 53px;
+      margin-right: 12px;
+      padding: 0 0 10px 0;
+      a {
+        line-height: 25px;
+        color: $white;
+        padding: 10px 20px;
+        display: block;
+        &:hover {
+          background: $gray-lighter;
+          color: $orange;
+        }
+      }
+    }
+
+    &:hover {
+      .dropdown {
+        visibility: visible;
+        opacity: 1;
+        margin-top: 60px;
+      }
+    }
+  }
+}

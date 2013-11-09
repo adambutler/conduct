@@ -1,0 +1,16 @@
+@include sticky-footer(85px, "#root", "#root-footer", "footer.main");
+
+footer.main {
+  height: 45px;
+  text-align: center;
+  color: $white;
+  background: $navy;
+  padding: 20px 0;
+
+  p {
+    font-weight: bold;
+    small {
+      font-weight: normal;
+    }
+  }
+}

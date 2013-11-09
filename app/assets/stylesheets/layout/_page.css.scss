@@ -1,0 +1,131 @@
+.page {
+  position: relative;
+  @include transition(height 1s ease-in-out);
+  @include border-radius($default-border-radius $default-border-radius 0 0);
+  width: 630px;
+  height: 284px;
+  background: $white;
+  overflow: hidden;
+  margin: 20px 0 0 260px;
+  color: $navy;
+
+  .nav-bar {
+    .avatar {
+      width: 31px;
+      height: 31px;
+    }
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 10px;
+    line-height: 12px;
+    color: $navy-lighter;
+  }
+
+  .span8 {
+    width: 450px;
+  }
+
+  .nav-bar {
+    padding-left: 125px;
+    font-size: 12px;
+    margin-bottom: 20px;
+    .logo {
+      font-size: 18px;
+    }
+  }
+
+  .container {
+    width: auto;
+    margin: 0 10px;
+  }
+
+  .label {
+    font-size: 13px;
+  }
+
+  .input-flash {
+    @extend .clearfix;
+    width: 610px;
+    h2 {
+      font-size: 20px;
+    }
+
+    p, h2 {
+      text-align: center;
+    }
+
+    form {
+      font-size: 12px;
+      input {
+        width: 400px;
+        box-sizing: border-box;
+        margin-left: 105px;
+        margin-top: 7px;
+        text-align: center;
+        &[type=submit] {
+          width: 610px;
+          background: $green;
+          color: $white;
+          border: none;
+          padding: 13px 0;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  #input-flash-show {
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    form {
+      input {
+        width: 450px;
+        margin-left: 80px;
+      }
+    }
+  }
+
+  #input-flash-login, #input-flash-show {
+    opacity: 0;
+    z-index: 0;
+  }
+
+  #page-default, #input-flash-login, #input-flash-show {
+    @include transition(opacity 1s ease-in-out);
+    position: absolute;
+  }
+
+  .hero.active & {
+    height: 338px;
+    #page-default {
+      opacity: 0;
+      z-index: 0;
+    }
+    #input-flash-login {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
+  .hero.active.loggedIn & {
+    #input-flash-login {
+      opacity: 0;
+      z-index: 0;
+    }
+    #input-flash-show {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+}

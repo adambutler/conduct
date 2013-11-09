@@ -1,0 +1,28 @@
+.menu {
+  
+  ul, li {
+    list-style: none;
+  }
+
+  > ul {
+    font-weight: bold;
+    padding: 0;
+    > li {
+      margin: 20px 0;
+      > ul {
+        margin-top: 10px;
+        font-weight: normal;
+        padding-left: 10px;
+        a {
+          color: $gray-dark;
+          font-size: 12px;
+          padding: 3px 0;
+          display: block;
+          &:hover {
+            color: $navy;
+          }
+        }
+      }
+    }
+  }
+}

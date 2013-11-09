@@ -1,0 +1,44 @@
+.votebox {
+  @include border-radius;
+  position: relative;
+  overflow: hidden;
+  background: $green;
+  color: $white;
+  a { color: $white; }
+  width: 64px;
+  height: 64px;
+  text-align: center;
+  float: left;
+  margin-right: 10px;
+
+  .score {
+    @extend .font-ubuntuMedium;
+    font-size: 20px;
+    line-height: 44px;
+  }
+
+  .vote {
+    @include position(absolute, auto 0px 0px 0px);
+    background: darken($green, 6%);
+    font-size: 13px;
+    line-height: 18px;
+    padding-bottom: 2px;
+    width: auto;
+    border: none;
+    margin: 0;
+    color: $white;
+    cursor: pointer;
+    @include border-radius(0);
+
+    &.vote-voted {
+      cursor: default;
+    }
+  }
+
+  &.votebox-error {
+    background: $red;
+    .vote {
+      background: darken($red, 6%);
+    }
+  }
+}

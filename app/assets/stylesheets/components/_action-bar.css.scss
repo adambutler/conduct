@@ -1,0 +1,10 @@
+.action-bar {
+  border-bottom: 1px solid $gray-lighter;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  text-align: right;
+  .customSelect {
+    text-align: left;
+  }
+}

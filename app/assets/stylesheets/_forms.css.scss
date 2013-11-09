@@ -1,0 +1,77 @@
+input[type=text], input[type=password], textarea {
+  @include border-radius;
+
+  @extend .font-ubuntu;
+  background: $gray-lighter;
+  color: $gray-dark;
+  
+  border: 2px solid $gray;
+  font-size: 16px;
+
+  line-height: 38px;
+  padding: 0 10px;
+  width: 430px;
+}
+
+.form-horizontal {
+  .control-label {
+    float: left;
+    width: 200px;
+  }
+
+  .controls {
+    margin-left: 220px;
+    input, select {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+
+  .control-group {
+    line-height: 33px;
+    margin-bottom: 5px;
+  }
+}
+
+span.customSelect { 
+    font:12px sans-serif;
+    background:#fff url(http://i48.tinypic.com/2u7rpec.png) right center no-repeat;
+    border:1px solid #ddd;
+    color:#555;
+    padding:7px 9px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px 2px;
+    width:175px;
+}
+
+.form-centered {
+  @include border-radius;
+  text-align: center;
+  background: $white;
+  margin: auto;
+  width: 540px;
+  padding: 20px;
+  color: $navy;
+
+  h1 {
+    padding-bottom: 20px;
+    border-bottom: 1px solid $gray-lighter;
+  }
+
+  label {
+    display: block;
+  }
+
+  .field {
+    margin-bottom: 10px;
+  }
+
+  input {
+    text-align: center;
+  }
+
+  .btn {
+    width: 170px;
+  }
+}
