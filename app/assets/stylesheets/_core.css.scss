@@ -12,7 +12,7 @@ html {
   background: $white;
   color: $navy;
 
-  &.foh {
+  &.theme--orange {
     background: $orange;
     color: $white;
   }
@@ -27,7 +27,7 @@ html {
   width: auto;
   margin: 0 20px;
 
-  .foh & {
+  .theme--orange & {
     margin: 0;
   }
 }
