@@ -1,0 +1,102 @@
+</div>
+  <div
+    ng-controller="HeroController"
+    ng-init="construct({
+      host: '<%= "#{request.protocol}#{request.host}" %>'
+    } <% if current_user %>, <%= current_user.id %><% end %>)"
+  >
+    <div class="hero" ng-class="{
+      active: statusDataRecived(),
+      loggedIn: statusUserRecived()
+    }">
+      <div class="container">
+        <ul class="unstyled">
+          <li>
+            <span class="number">1</span>
+            <div class="text">
+              <h2 class="title">Add a topic</h2>
+              <input type="text" placeholder="e.g. {{options.defaults.topic.title}}" ng-model="topic.title">
+            </div>
+          </li>
+          <li>
+            <span class="number">2</span>
+            <div class="text">
+              <h2 class="title">Send out your private link</h2>
+              <input type="text" placeholder="{{options.host}}/x/<this-is-the-secret-bit>" value="{{getTopicDisplayLink()}}">
+            </div>
+          </li>
+          <li>
+            <span class="number">3</span>
+            <div class="text">
+              <h2 class="title">Get responses, votes &amp; suggestions</h2>
+            </div>
+            <div class="page">
+              <nav class="nav-bar">
+                <div class="logo">Conduct.io</div>
+                <a href="#">My topics</a>
+                <div class="user">
+                  <%= image_tag("user.png", :class => 'avatar') %>
+                </div>
+              </nav>
+              <div class="container">
+                <header class="page-header">
+                  <h1>{{getTopicDisplayTitle()}}</h1>
+                  <p class="meta">Created 20th June 2013 by adambutler</p>
+                  <div class="labels">
+                    <span class="label label-success">Open</span>
+                  </div>
+                </header>
+                <div class="row" id="page-default">
+                  <div class="span8">
+                    <ul class="suggestions">
+                      <li>
+                        <div class="votebox">
+                          <span class="score">112</span>
+                          <a href="#" class="vote">vote</a>
+                        </div>
+                        <h2>AngularJS</h2>
+                        <p>AngularJS is what HTML would have been, had it been designed for building web-apps. Declarative templates with data-binding, MVW, MVVM, MVC.</p>
+                        <p class="meta">Suggested by adambutler about 6 minutes ago</p>
+                      </li>
+                      <li>
+                        <div class="votebox">
+                          <span class="score">96</span>
+                          <a href="#" class="vote">vote</a>
+                        </div>
+                        <h2>Backbone</h2>
+                        <p>Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable.</p>
+                        <p class="meta">Suggested by adambutler about 8 minutes ago</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="span4">
+                  </div>
+                </div>
+
+                <div class="input-flash" id="input-flash-login">
+                  <h2 class="text-tight">Nearly Done... Login or Register</h2>
+                  <form class="form" id="signup" ng-submit="loginFormSubmited()">
+                    <input ng-model="user.email" type="text" placeholder="Email">
+                    <input ng-model="user.password" type="password" placeholder="Password">
+                    <input name="bucket_hex" value="{{getRawHex()}}" style="display:none;">
+                    <input type="submit" class="btn btn-block">Login / Register</button>
+                  </form>
+                </div>
+
+                <div class="input-flash" id="input-flash-show">
+                  <h2>Great your all set! What are you waiting for!</h2>
+                  <form class="form">
+                    <input type="text" value="{{displayLink()}}">
+                  </form>
+                  <br/>
+                  <p>Share this link with others to get suggestions and votes on your topic</p>
+                </div>
+
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<div class="container">
