@@ -1,6 +1,7 @@
 class Topic < ActiveRecord::Base
 
   after_save :generate_secret
+  has_many :ideas
 
   private
 

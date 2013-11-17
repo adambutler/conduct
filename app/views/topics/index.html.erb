@@ -1,33 +1,19 @@
-<h1>Listing topics</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Locked</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @topics.each do |topic| %>
-      <tr>
-        <td><%= topic.title %></td>
-        <td><%= topic.description %></td>
-        <td><%= topic.locked %></td>
-        <td><%= topic.user_id %></td>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Topic', new_topic_path %>
+<h1>My topics</h1>
+<p><small>Signed in as <%= current_user.email %> <%= link_to "Log out", logout_path %><small></p>
+<ul class="topics">
+  <% @topics.each do |topic| %>
+    <li id="topic-<%= topic.id %>">
+      
+      <div class="topic-body">
+        <h2><%= link_to topic.title, "/topics/#{topic.secret}" %></h2>
+        <p><%= topic.description %></p>
+        <p class="meta">Created by you <%= time_ago_in_words(topic.created_at) %> ago | <%= link_to 'Edit', edit_topic_path(topic) %> | <%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <ul class="topic-stats">
+          <li class="stats-ideas"><%= pluralize(topic.ideas.count, 'idea') %></li>
+          <li class="stats-ideas"><%=  pluralize(topic.ideas.map(&:user_id).uniq.count, 'contributor') %></li>
+          <li class="stats-ideas"><%= pluralize(0, 'vote') %>
+        </ul>
+      </div>
+    </li>
+  <% end %>
+</ul>
