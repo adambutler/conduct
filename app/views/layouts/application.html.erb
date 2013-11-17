@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="Conduct" class="theme theme--orange">
+<html ng-app="Conduct" class="<%= get_theme %> <%= "page-#{params[:controller]}-#{params[:action]}" %>">
   <head>
     <title>Conduct</title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
