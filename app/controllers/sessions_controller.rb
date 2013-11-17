@@ -1,17 +1,28 @@
 class SessionsController < ApplicationController
   def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to root_url, notice: "Logged in!"
-    else
-      flash.now.alert = "Uh oh... looks like your credentials aren't legit!"
-      render "new"
+    user = User.find_by_email(params[:user][:email]) || User.create(user_params)
+
+    respond_to do |format|
+      if user && user.authenticate(params[:user][:password])
+        session[:user_id] = user.id
+        format.html { redirect_to root_url, notice: "Logged in!" }
+        format.json { render :json => user }
+      else
+        flash.now.alert = "Uh oh... looks like your credentials aren't legit!"
+        render "new"
+      end
     end
   end
 
   def destroy
     session[:user_id] = nil
     redirect_to root_url, notice: "Logged out!"
+  end
+
+  private
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end
