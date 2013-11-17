@@ -50,4 +50,4 @@ group :development do
 end
 
 gem 'bourbon'
-gem 'compass-rails', '~> 2.0.alpha.0'
+gem 'compass-rails', :git => 'git://github.com/fourseven/compass-rails.git'
