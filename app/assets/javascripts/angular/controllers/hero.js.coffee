@@ -51,6 +51,11 @@
     }, (user) ->
       $scope.topic.user_id = user.id
       $scope.topic.$update()
+    , (error) ->
+      console.log error
+      switch error.status
+        when 401 then alert "Sorry the password you entered does not match that e-mail."
+        else alert "Oops... Something went wrong and we can't create your user at this time."
 
   $scope.$watch 'topic.title', ->
 

@@ -3,13 +3,14 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:user][:email]) || User.create(user_params)
 
     respond_to do |format|
-      if user && user.authenticate(params[:user][:password])
+      if user.authenticate(params[:user][:password])
         session[:user_id] = user.id
         format.html { redirect_to root_url, notice: "Logged in!" }
         format.json { render :json => user }
       else
         flash.now.alert = "Uh oh... looks like your credentials aren't legit!"
-        render "new"
+        format.html { redirect_to login_path, :status => :unauthorized }
+        format.json { render :json => { message: "Uh oh... looks like your credentials aren't legit!"}, :status => :unauthorized }
       end
     end
   end
