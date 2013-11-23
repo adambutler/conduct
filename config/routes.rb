@@ -1,4 +1,6 @@
 Conduct::Application.routes.draw do
+  resources :votes
+
   resources :sessions
   resources :users
 

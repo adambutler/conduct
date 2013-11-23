@@ -1,24 +1,118 @@
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @topic.description %>
-</p>
+<header class="page-header">
+  <h1><%= @topic.title %></h1>
+  <p><%= @topic.description %></p>
+  <p class="meta">Created 20th June 2013 by adambutler | Share link is - <%= "#{request.protocol}#{request.host}/topics/#{@topic.secret}" %></p>
+  <div class="labels">
+    <span class="label label-<%= @topic.locked ? 'error' : 'success' %>"><%= @topic.locked ? 'closed' : 'open' %></span>  
 
-<p>
-  <strong>Locked:</strong>
-  <%= @topic.locked %>
-</p>
+    <%= link_to 'Settings', "/topics/#{@topic.secret}/settings", :class => "label" %>
 
-<p>
-  <strong>User:</strong>
-  <%= @topic.user_id %>
-</p>
+  </div>
+</header>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<div class="row-fluid" ng-controller="TopicController" ng-init="construct({}, '<%= @topic.secret %>')">
+
+  <div class="column-right">
+    <ul class="sidebar">
+
+      <li class="sidebar-item-chart">
+        <h3>Ideas in the last 7 days</h3>
+        <canvas id="canvas" height="150" width="315"></canvas>
+      </li>
+
+      <% unless @topic.locked %>
+
+        <li class="sidebar-item-new-idea">
+          <h3>Suggest an idea</h3>
+
+          <form name="new" ng-submit="addIdea()">
+
+            <div class="field">
+              <label for="idea_name">Name</label><br>
+              <input type="text" ng-model="newIdea.name" required>
+            </div>
+            <div class="field">
+              <label for="idea_description">Description</label><br>
+              <textarea type="text" ng-model="newIdea.description"></textarea>
+            </div>
+            <div class="actions">
+              <input type="submit" value="Create Idea" ng-disabled="new.$invalid">
+            </div>
+
+          </form>
+
+        </li>
+
+      <% end %>
+
+    </ul>
+  </div>
+
+  <div class="column-left">
+    <div class="column-content">
+
+      <form class="action-bar">
+        <label for="sort">Sort by - </label>
+        <select ng-model="sort">
+          <option selected value="-votes.total_vote_qty">Votes - Decending</option>
+          <option value="votes.total_vote_qty">Votes - Accending</option>
+          <option value="-created_at">Created - Newest First</option>
+          <option value="created_at">Created - Oldest First</option>
+          <option value="name">Title - Accending</option>
+          <option value="-name">Title - Decending</option>
+        </select>
+      </form>
+
+      <% if @topic.locked %>
+        <p class="flash flash-alert"><%= @owner ? 'You have' : 'The owner has' %> closed this topic, you can not vote or add new ideas.</p>
+      <% end %>
+
+      <ul class="suggestions">
+
+        <li ng-repeat="idea in topic.ideas | orderBy: sort">
+          <div class="votebox votebox-<%= @topic.locked ? 'error' : 'success' %>">
+            <span class="score">{{idea.votes.total_vote_qty}}</span>
+            <a href ng-hide="idea.voteable" class="vote vote-voted">voted</a>
+            <a href ng-show="idea.voteable" class="vote" ng-click="vote(idea)">{{(idea.voteable && 'vote' || 'voted')}}</a>
+          </div>
+          <div class="idea-body">
+            <h2>{{idea.title}}</h2>
+            <p>{{idea.description}}</p>
+            <p class="meta">Suggested by #{{idea.user_id}} {{idea.created_time_ago_in_words}}
+              | <a href="{{idea.public_link}}/edit">edit</a>
+              | <a href="{{idea.public_link}}/edit">delete</a>
+            </p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var lineChartData, myLine;
+
+  lineChartData = {
+    labels: <%= raw ((1.week.ago.to_date..Date.today).map{ |date| date.strftime("%b %d") }) %>,
+    datasets: [
+      {
+        fillColor: "rgba(242,155,44,1)",
+        strokeColor: "rgba(242,155,44,0)",
+        data: <%= (1.week.ago.to_date..Date.today).map { |date| @topic.ideas.qty_on(date).to_f}.inspect %>
+      }
+    ]
+  };
+
+  myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData, {
+    pointDot : false,
+    scaleShowGridLines: false,
+    scaleFontFamily : "'UbuntuRegular'",
+    scaleFontColor : "#b2bcc5",
+    scaleFontSize : 11,
+  });
+</script>

@@ -16,6 +16,8 @@
 //= require angular-resource
 //= require turbolinks
 
+//= require Chart
+
 //= require_tree ./angular/modules
 //= require_tree ./angular/factories
 //= require_tree ./angular/controllers

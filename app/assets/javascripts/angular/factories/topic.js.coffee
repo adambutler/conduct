@@ -1,8 +1,8 @@
 @Conduct.factory 'Topic', ($resource) ->
   class Topic
-    constructor: ->
+    constructor: (secret) ->
       @service = $resource "/topics/:secret.json",
-        secret: "@secret"
+        secret: secret
       ,
         'update': method: 'PUT'
 
@@ -12,3 +12,6 @@
 
     all: ->
       @service.query()
+
+    get: ->
+      @service.get()
