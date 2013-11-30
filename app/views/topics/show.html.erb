@@ -76,8 +76,7 @@
         <li ng-repeat="idea in topic.ideas | orderBy: sort">
           <div class="votebox votebox-<%= @topic.locked ? 'error' : 'success' %>">
             <span class="score">{{idea.votes.total_vote_qty}}</span>
-            <a href ng-hide="idea.voteable" class="vote vote-voted">voted</a>
-            <a href ng-show="idea.voteable" class="vote" ng-click="vote(idea)">{{(idea.voteable && 'vote' || 'voted')}}</a>
+            <span ng-disabled="votable(idea)" class="vote" ng-click="vote(idea)">{{votable(idea) && 'vote' || 'voted'}}</a>
           </div>
           <div class="idea-body">
             <h2>{{idea.title}}</h2>
