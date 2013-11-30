@@ -3,7 +3,7 @@ class CreateIdeas < ActiveRecord::Migration
     create_table :ideas do |t|
       t.string :title
       t.text :description
-      t.integer :topic_id
+      t.string :topic_id
       t.integer :user_id
 
       t.timestamps

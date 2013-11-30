@@ -26,7 +26,7 @@ ideas.each do |idea|
   Idea.create({
     title: idea,
     user_id: first_user.id,
-    topic_id: topic.id
+    topic_id: topic.secret
   })
 end
 
@@ -76,7 +76,7 @@ ideas.each do |idea|
     title: idea[:title],
     description: idea[:description],
     user_id: first_user.id,
-    topic_id: topic.id
+    topic_id: topic.secret
   })
 end
 
