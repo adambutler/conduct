@@ -76,7 +76,13 @@
         <li ng-repeat="idea in topic.ideas | orderBy: sort">
           <div class="votebox votebox-<%= @topic.locked ? 'error' : 'success' %>">
             <span class="score">{{idea.votes.total_vote_qty}}</span>
-            <span ng-disabled="votable(idea)" class="vote" ng-click="vote(idea)">{{votable(idea) && 'vote' || 'voted'}}</a>
+            <span ng-disabled="votable(idea)" class="vote" ng-click="vote(idea)"
+              ng-class="{
+                'vote-voted': !votable(idea)
+              }"
+            >
+              {{votable(idea) && 'vote' || '✔'}}
+            </span>
           </div>
           <div class="idea-body">
             <h2>{{idea.title}}</h2>
