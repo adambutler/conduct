@@ -1,0 +1,15 @@
+<div class="login form-centered">
+  <h1>Forgotton Password</h1>
+
+  <%= form_tag password_resets_path do %>
+    <div class="field">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, params[:email] %>
+    </div>
+    <div class="actions"><%= submit_tag "Reset password", :class => "btn-primary" %></div>
+  <% end %>
+
+  <hr/>
+
+  <a href="/login">Remembered your password?</a>
+</div>

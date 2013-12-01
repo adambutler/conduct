@@ -1,4 +1,5 @@
 Conduct::Application.routes.draw do
+  get "password_resets/new"
   resources :votes
 
   resources :sessions
@@ -8,9 +9,12 @@ Conduct::Application.routes.draw do
 
   resources :topics
 
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
+  resources :password_resets
+  get 'forgot', to: 'password_resets#new'
+
+  get 'signup', to: 'users#new'
+  get 'login', to: 'sessions#new'
+  get 'logout', to: 'sessions#destroy'
 
   root 'static#landing'
 
