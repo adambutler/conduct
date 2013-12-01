@@ -1,0 +1,2 @@
+$ ->
+  $('.js-sticky-item').sticky()

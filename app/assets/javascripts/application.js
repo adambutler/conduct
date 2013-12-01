@@ -17,6 +17,7 @@
 //= require turbolinks
 
 //= require Chart
+//= require jquery.sticky
 
 //= require_tree ./angular/modules
 //= require_tree ./angular/factories
