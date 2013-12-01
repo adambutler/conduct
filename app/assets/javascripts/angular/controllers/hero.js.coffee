@@ -47,7 +47,6 @@
     new Session().create {
       email: $scope.user.email
       password: $scope.user.password
-      password_confirmation: $scope.user.password
     }, (user) ->
       $scope.topic.user_id = user.id
       $scope.topic.$update()

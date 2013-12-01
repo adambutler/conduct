@@ -2,14 +2,12 @@
 
 first_user = User.create({
   email: "adam@lab.io",
-  password: "hammertime",
-  password_confirmation: "hammertime"
+  password: "hammertime"
 })
 
 second_user = User.create({
   email: "adam@littlebigmedia.co.uk",
-  password: "hammertime",
-  password_confirmation: "hammertime"
+  password: "hammertime"
 })
 
 # First Topic
