@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.

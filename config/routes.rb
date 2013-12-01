@@ -10,7 +10,11 @@ Conduct::Application.routes.draw do
   resources :topics
 
   resources :password_resets
+  resources :access_token
+  
   get 'forgot', to: 'password_resets#new'
+
+  get 'account/edit', to: 'users#edit'
 
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'

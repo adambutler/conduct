@@ -1,0 +1,41 @@
+<div class="form-centered" ng-controller="userEditController">
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field" data-action-hide data-action-show data-action-show-target="#passwordFields">
+      <a href="#" ng-click="passwordShown = true" ng-hide="passwordShown">Change Password</a>
+    </div>
+    <div ng-show="passwordShown">
+      <div class="field">
+        <%= f.label :password, "New Password" %>
+        <%= f.password_field :password, :value => "" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :access_token %>
+      <%= f.text_field :access_token, :rows => 5 %>
+    </div>
+    <div class="field">
+      <%= link_to 'reset api key', new_access_token_path %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Save Changes" %>
+    </div>
+  <% end %>
+</div>
