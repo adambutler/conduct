@@ -2,6 +2,11 @@ class Topic < ActiveRecord::Base
 
   after_save :generate_secret
   has_many :ideas, :primary_key => "secret"
+
+  def to_param
+    secret
+  end
+
   private
 
   def generate_secret
