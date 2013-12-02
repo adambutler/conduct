@@ -1,6 +1,16 @@
-<h1>Editing topic</h1>
+<div class="login form-centered">
+  <h1>Edit Topic</h1>
 
-<%= render 'form' %>
+  <%= form_for(@topic) do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :title, :placeholder => "e.g. Subject for next weeks meetup" %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description, :rows => 5 %>
+    </div>
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
+    <div class="actions"><%= submit_tag "Save Changes", :class => "btn-primary" %></div>
+  <% end %>
+</div>
