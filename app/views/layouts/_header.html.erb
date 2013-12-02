@@ -2,8 +2,8 @@
   <a href="/"><h1>Conduct.io <small>Group decisions made easy</small></h1></a>
   <% if request.env['PATH_INFO'] != '/' %>
     <nav>
-      <%= link_to_unless_current('My Topics', '#') { |link| raw "<span class=\"current\">#{link}</span>"} %>
-      <%= link_to_unless_current('New Topic', '#') { |link| raw "<span class=\"current\">#{link}</span>"} %>
+      <%= link_to_unless_current('My Topics', topics_path) { |link| raw "<span class=\"current\">#{link}</span>"} %>
+      <%= link_to_unless_current('New Topic', new_topic_path) { |link| raw "<span class=\"current\">#{link}</span>"} %>
     </nav>
     <div class="user">
       <a href="#">
