@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def create
-    user = User.find_by_email(params[:user][:email]) || User.create(user_params)
+
+    user = get_user
 
     respond_to do |format|
       if user.authenticate(params[:user][:password])
@@ -9,7 +10,7 @@ class SessionsController < ApplicationController
         format.json { render :json => user }
       else
         flash.now.alert = "Uh oh... looks like your credentials aren't legit!"
-        format.html { redirect_to login_path, :status => :unauthorized }
+        format.html { redirect_to login_path, :notice => "Invalid login" }
         format.json { render :json => { message: "Uh oh... looks like your credentials aren't legit!"}, :status => :unauthorized }
       end
     end
@@ -26,4 +27,17 @@ class SessionsController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password)
   end
+
+  def get_user
+
+    user = User.find_by_email(params[:user][:email])
+
+    if user.present?
+      return user
+    else
+      return User.create(user_params)
+    end
+
+  end
+
 end
