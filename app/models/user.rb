@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  
+  has_secure_password(validations: false)
   validates_uniqueness_of :email
 
   def access_token_reset
@@ -18,4 +19,5 @@ class User < ActiveRecord::Base
       self[column] = rand(36**length).to_s(36)
     end while User.exists?(column => self[column])
   end
+
 end
