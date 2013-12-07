@@ -1,16 +1,4 @@
-<div class="login form-centered">
+<div class="form-centered">
   <h1>Edit Topic</h1>
-
-  <%= form_for(@topic) do |f| %>
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :title, :placeholder => "e.g. Subject for next weeks meetup" %>
-    </div>
-    <div class="field">
-      <%= f.label :description %>
-      <%= f.text_area :description, :rows => 5 %>
-    </div>
-
-    <div class="actions"><%= submit_tag "Save Changes", :class => "btn-primary" %></div>
-  <% end %>
+  <%= render :partial => 'form', :locals => {:button_text => "Save Changes"} %>
 </div>

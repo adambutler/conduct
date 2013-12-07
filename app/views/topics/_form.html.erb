@@ -19,7 +19,36 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
+
+  <div class="field">
+    <div class="text-centered">
+      <div switch class="switch" ng-class="state" data-state="<%= @topic.locked %>">
+        <div class="switch--toggle">
+          <span
+            ng-class="{
+              'active': !on
+            }"
+          >
+            Unlocked
+          </span>
+          <span
+            ng-class="{
+              'active': on
+            }"
+          >
+            Locked
+          </span>
+        </div>
+
+        <div class="field hide">
+          <%= f.check_box :locked, data: { "ng-model" => "on" } %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <div class="actions">
-    <%= f.submit "Create" %>
+    <%= f.submit button_text %>
   </div>
 <% end %>

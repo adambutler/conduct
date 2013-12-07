@@ -1,0 +1,52 @@
+.switch {
+  @include border-radius;
+  @include box-shadow(inset 0 0 8px rgba(0,0,0,0.2));
+  display: inline-block;
+  width: 125px;
+  height: 45px;
+  padding: 3px;
+  background: $gray;
+}
+
+.switch--toggle {
+  @include border-radius(5px);
+  @include transition(all 300ms ease-in-out);
+  @include box-shadow(0 0 3px rgba($green,1));
+  position: relative;
+  overflow: hidden;
+  width: 88px;
+  height: 45px;
+  background: $green;
+  cursor: pointer;
+
+  span {
+    @include transition(all 300ms ease-in-out);
+    line-height: 45px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: $white;
+
+    &:nth-child(1) {
+      @include transform(translateY(-100%));
+      &.active {
+        @include transform(translateY(0%));
+      }
+    }
+
+    &:nth-child(2) {
+      @include transform(translateY(100%));
+      &.active {
+        @include transform(translateY(0%));
+      }
+    }
+  }
+}
+
+.switch--on .switch--toggle {
+  @include box-shadow(0 0 3px rgba($red,1));
+  @include transform(translateX(37px));
+  background: $red;
+}
