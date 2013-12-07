@@ -9,7 +9,7 @@
   <div class="labels">
     <span class="label label-<%= @topic.locked ? 'error' : 'success' %>"><%= @topic.locked ? 'closed' : 'open' %></span>  
 
-    <%= link_to 'Settings', "/topics/#{@topic.secret}/settings", :class => "label" %>
+    <%= link_to 'Settings', edit_topic_path(@topic), :class => "label" %>
 
   </div>
 </header>
