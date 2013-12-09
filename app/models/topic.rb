@@ -1,16 +1,21 @@
+include ApplicationHelper
+
 class Topic < ActiveRecord::Base
 
-  after_save :generate_secret
   has_many :ideas, :primary_key => "secret"
+  after_create :generate_secret
 
   def to_param
     secret
   end
-
+  
   private
 
   def generate_secret
-    update_column(:secret, Digest::MD5.hexdigest("#{created_at}#{id}hammertime")) 
+    begin
+      self[:secret] = generate_token(6)
+    end while Topic.exists?(:secret => self[:secret])
+    save!
   end
 
 end
