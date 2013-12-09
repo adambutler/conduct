@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     respond_to do |format|
       if user.authenticate(params[:user][:password])
         session[:user_id] = user.id
-        format.html { redirect_to root_url, notice: "Logged in!" }
+        format.html { redirect_to topics_path, notice: "Logged in!" }
         format.json { render :json => user }
       else
         flash.now.alert = "Uh oh... looks like your credentials aren't legit!"
