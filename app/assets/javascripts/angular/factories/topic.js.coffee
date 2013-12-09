@@ -2,7 +2,7 @@
   class Topic
     constructor: (secret) ->
       @service = $resource "/topics/:secret.json",
-        secret: secret
+        secret: secret || '@secret'
       ,
         'update': method: 'PUT'
 
