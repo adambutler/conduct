@@ -5,9 +5,9 @@ Conduct::Application.routes.draw do
   resources :sessions
   resources :users
 
-  resources :ideas
-
-  resources :topics
+  resources :topics do
+    resources :ideas
+  end
 
   resources :password_resets
   resources :access_token
