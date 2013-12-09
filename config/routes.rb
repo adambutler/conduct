@@ -20,6 +20,8 @@ Conduct::Application.routes.draw do
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#destroy'
 
+  get 'api', to: 'static#api'
+
   root 'static#landing'
 
   # The priority is based upon order of creation: first created -> highest priority.

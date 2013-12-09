@@ -54,3 +54,6 @@ gem 'bourbon'
 gem 'compass-rails', :git => 'git://github.com/fourseven/compass-rails.git'
 
 gem 'angularjs-rails'
+
+gem 'redcarpet'
+gem 'pygmentize'

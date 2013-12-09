@@ -1,0 +1,98 @@
+# <span id="suggestions">Suggestions</span>
+
+<hr id="list-suggestions"/>
+
+### List suggestions for a given topic
+
+``` nginx
+GET http://conduct.io/api/v1/topics/:topic_id/suggestions
+```
+
+<%= render partial: 'static/api/headers' %>
+
+###### Inputs
+
+| Input | Type | Description | Default | Options |
+| ----- | ---- | ----------- | ------- | ------- |
+| `per_page` | `integer` | results to show per page | `20` | `[1..10000]` |
+| `sort_field` | `string` | field to sort by | `created_at` | `id, title, created_at` |
+| `sort_dir` | `string` | direction to sort by | `desc` | `asc, desc` |
+
+###### Limitations
+
+- Topics are private, you can only list topics that you own.
+
+<hr id="create-suggestion"/>
+
+### Create a suggestion on a given topic
+
+``` nginx
+POST http://conduct.io/api/v1/topics`
+```
+
+<%= render partial: 'static/api/headers' %>
+
+###### Inputs
+
+| Input | Type | Description | Default | Required |
+| ----- | ---- | ----------- | ------- | ------- |
+| `title` | `string` | suggestion title | `null` | `true` |
+| `description` | `string` | suggestion description | *empty string* | `false` |
+
+###### Limitations
+
+*none*
+
+<hr id="edit-a-suggestion"/>
+
+### Edit a Suggestion
+
+``` nginx
+PUT http://conduct.io/api/v1/suggestions/:suggestion_id
+```
+
+*or*
+
+``` nginx
+PUT http://conduct.io/api/v1/topics/:topic_id/suggestions/:suggestion_id
+```
+
+<%= render partial: 'static/api/headers' %>
+
+###### Inputs
+
+| Input | Type | Description | Default | Required |
+| ----- | ---- | ----------- | ------- | ------- |
+| `title` | `string` | topic title | *current* | `false` |
+| `description` | `string` | topic description | *current* | `false` |
+| `locked` | `boolean` | is the topic locked | *current* | `false` |
+
+###### Limitations
+
+- You must be the owner of the topic
+
+<hr id="delete-a-suggestion"/>
+
+### Delete a Suggestion
+
+``` nginx
+DELETE http://conduct.io/api/v1/suggestions/:suggestion_id
+```
+
+*or*
+
+``` nginx
+DELETE http://conduct.io/api/v1/topics/:topic_id/suggestions/:suggestion_id
+```
+
+<%= render partial: 'static/api/headers' %>
+
+###### Inputs
+
+*none*
+
+###### Limitations
+
+- You must be the owner of the topic
+
+-----

@@ -1,0 +1,88 @@
+# <span id="topics">Topics</span>
+
+<hr id="list-all-topics"/>
+
+### List all Topics
+
+``` nginx
+GET http://conduct.io/api/v1/topics
+```
+
+<%= render partial: 'static/api/headers' %>
+
+###### Inputs
+
+| Input | Type | Description | Default | Options |
+| ----- | ---- | ----------- | ------- | ------- |
+| `per_page` | `integer` | results to show per page | `20` | `[1..10000]` |
+| `sort_field` | `string` | field to sort by | `created_at` | `id, title, created_at` |
+| `sort_dir` | `string` | direction to sort by | `desc` | `asc, desc` |
+
+###### Limitations
+
+- Topics are private, you can only list topics that you own.
+
+<hr id="create-a-topic"/>
+
+### Create a Topic 
+
+``` nginx
+POST http://conduct.io/api/v1/topics`
+```
+
+<%= render partial: 'static/api/headers' %>
+
+###### Inputs
+
+| Input | Type | Description | Default | Required |
+| ----- | ---- | ----------- | ------- | ------- |
+| `title` | `string` | topic title | `null` | `true` |
+| `description` | `string` | topic description | `null` | `false` |
+| `locked` | `boolean` | is the topic locked | `false` | `false` |
+
+###### Limitations
+
+*none*
+
+<hr id="edit-a-topic"/>
+
+### Edit a Topic
+
+``` nginx
+PUT http://conduct.io/api/v1/topics/:topic_id
+```
+
+<%= render partial: 'static/api/headers' %>
+
+###### Inputs
+
+| Input | Type | Description | Default | Required |
+| ----- | ---- | ----------- | ------- | ------- |
+| `title` | `string` | topic title | *current* | `false` |
+| `description` | `string` | topic description | *current* | `false` |
+| `locked` | `boolean` | is the topic locked | *current* | `false` |
+
+###### Limitations
+
+- You must be the owner of the topic
+
+<hr id="delete-a-topic"/>
+
+### Delete a Topic
+
+``` nginx
+DELETE http://conduct.io/api/v1/topics/:topic_id
+```
+
+<%= render partial: 'static/api/headers' %>
+
+
+###### Inputs
+
+*none*
+
+###### Limitations
+
+- You must be the owner of the topic
+
+-----
