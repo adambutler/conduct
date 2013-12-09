@@ -88,8 +88,10 @@
             <h2>{{idea.title}}</h2>
             <p>{{idea.description}}</p>
             <p class="meta">Suggested by #{{idea.user_id}} {{idea.created_time_ago_in_words}}
-              | <a href="{{idea.public_link}}/edit">edit</a>
-              | <a href="{{idea.public_link}}/edit">delete</a>
+              <span ng-show="idea.owner">
+                | <a href="{{idea.edit_url}}">edit</a>
+                | <a href="{{idea.public_link}}/edit">delete</a>
+              </span>
             </p>
           </div>
         </li>
