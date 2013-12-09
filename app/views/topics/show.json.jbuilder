@@ -1,5 +1,7 @@
 json.extract! @topic, :title, :description, :locked, :user_id, :created_at, :updated_at, :secret
 
+json.url topic_path(@topic)
+
 json.ideas @topic.ideas do |idea|
   json.extract! idea, :title, :description, :topic_id, :user_id, :id
   json.created_at_in_words "#{ time_ago_in_words(idea.created_at) } ago"

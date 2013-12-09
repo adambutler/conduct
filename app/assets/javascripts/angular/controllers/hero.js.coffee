@@ -32,8 +32,8 @@
     $scope.topic.title || $scope.options.defaults.topic.title
 
   $scope.getTopicDisplayLink = ->
-    if $scope.topic.secret?
-      return "#{$scope.options.host}/#{$scope.topic.secret}"
+    if $scope.topic.url?
+      return "#{$scope.options.host}#{$scope.topic.url}"
     else
       return ""
 
