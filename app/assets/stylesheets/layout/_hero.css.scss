@@ -1,5 +1,9 @@
 .hero {
-  background: $gray-light;
+  
+  .page-static-landing & {
+    background: $gray-light;
+  }
+
   color: $navy;
   padding-top: 20px;
 
