@@ -6,3 +6,18 @@ $icon-sprite-dimensions: true;
 .icon {
   display: block;
 }
+
+i.icon {
+  position: absolute;
+  left: 0;
+  width: 25px;
+  height: 25px;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+  &.icon-title {
+    padding-left: 35px;
+  }
+}

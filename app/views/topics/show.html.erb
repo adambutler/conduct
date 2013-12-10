@@ -13,17 +13,18 @@
 <div class="row-fluid" ng-controller="TopicController" ng-init="construct({}, '<%= @topic.secret %>')">
 
   <div class="column-right">
+
     <ul class="sidebar list-unstyled">
 
       <li class="sidebar-item-chart">
-        <h3>Ideas in the last 7 days</h3>
+        <h3 class="icon-title"><i class="icon icon-mini_gauge"></i>Ideas in the last 7 days</h3>
         <canvas id="canvas" height="150" width="315"></canvas>
       </li>
 
       <% unless @topic.locked %>
 
         <li class="sidebar-item-new-idea">
-          <h3>Suggest an idea</h3>
+          <h3 class="icon-title"><i class="icon icon-mini_pencil"></i>Suggest an idea</h3>
 
           <form name="new" ng-submit="addIdea()">
 
@@ -51,7 +52,15 @@
   <div class="column-left">
     <div class="column-content">
 
-      <form class="action-bar">
+      <div class="text-centered text-spacious" ng-show="topic.ideas.length == 0">
+        <div class="icon-container">
+          <div class="icon icon-battery"></div>
+        </div>
+        <h2>This topic hasn't got any suggestions yet.</h2>
+        <p>Why not be the first to add a suggestion</p>
+      </div>
+
+      <form class="action-bar" ng-hide="topic.ideas.length == 0">
         <label for="sort">Sort by - </label>
         <select ng-model="sort">
           <option value="-votes.total_vote_qty">Votes - Decending</option>
@@ -67,7 +76,7 @@
         <p class="flash flash-alert"><%= @owner ? 'You have' : 'The owner has' %> closed this topic, you can not vote or add new ideas.</p>
       <% end %>
 
-      <ul class="suggestions">
+      <ul class="suggestions" ng-hide="topic.ideas.length == 0">
 
         <li ng-repeat="idea in topic.ideas | orderBy: sort">
           <div class="votebox votebox-<%= @topic.locked ? 'error' : 'success' %>">
