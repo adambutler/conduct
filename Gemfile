@@ -57,3 +57,5 @@ gem 'angularjs-rails'
 
 gem 'redcarpet'
 gem 'pygmentize'
+
+gem 'gravatar_image_tag'
