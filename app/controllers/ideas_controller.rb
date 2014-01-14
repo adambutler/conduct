@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
-  before_action :get_topic
+  before_action :set_topic, only: [:show, :create]
 
   # GET /ideas
   # GET /ideas.json
@@ -64,8 +64,13 @@ class IdeasController < ApplicationController
   end
 
   private
-    def get_topic
-      @topic = Topic.find_by_secret(@idea.topic_id)
+    
+    def set_topic
+      if params["topic_id"]
+        @topic = Topic.find_by_secret(params["topic_id"])
+      else
+        @topic = Topic.find_by_secret(@idea.topic_id)
+      end
     end
 
     # Use callbacks to share common setup or constraints between actions.
