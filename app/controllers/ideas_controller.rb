@@ -27,6 +27,7 @@ class IdeasController < ApplicationController
   def create
     @idea = Idea.new(idea_params)
     @idea.user_id = current_user.id
+    @idea.topic_id = @topic.to_param
     
     respond_to do |format|
       if @idea.save
