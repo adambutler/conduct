@@ -7,17 +7,6 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div
-      style="top: 30px; right: 10px; position: fixed; background: rgba(0,0,0,0.7); border-radius: 5px; color: #fff; padding: 10px; width: 200px; z-index: 50;"
-    >
-      <% if current_user %>
-        Logged in as <%= current_user.email %>.
-        <%= link_to "Log Out", logout_path %>
-      <% else %>
-        <%= link_to "Sign Up", signup_path %> or
-        <%= link_to "Log In", login_path %>
-      <% end %>
-    </div>
 
     <div id="root">
       <%= render 'layouts/header' %>
