@@ -83,7 +83,7 @@
         <p class="flash flash-alert"><%= @owner ? 'You have' : 'The owner has' %> closed this topic, you can not vote or add new ideas.</p>
       <% end %>
 
-      <ul class="suggestions" ng-hide="topic.ideas.length == 0">
+      <ul class="suggestions list-unstyled" ng-hide="topic.ideas.length == 0">
 
         <li ng-repeat="idea in topic.ideas | orderBy: sort">
           <div class="votebox votebox-<%= @topic.locked ? 'error' : 'success' %>">
