@@ -50,6 +50,11 @@ group :development do
   gem 'letter_opener'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 gem 'bourbon'
 gem 'compass-rails', :git => 'git://github.com/fourseven/compass-rails.git'
 
