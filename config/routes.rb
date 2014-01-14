@@ -1,4 +1,13 @@
 Conduct::Application.routes.draw do
+
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :topics do
+        resources :ideas
+      end
+    end
+  end
+
   get "password_resets/new"
   resources :votes
 
