@@ -7,7 +7,11 @@
     </nav>
     <div class="user">
       <a href="#">
-        <%= gravatar_image_tag(current_user.email, :class => 'avatar small') %>
+        <% if current_user %>
+          <%= gravatar_image_tag(current_user.email, :class => 'avatar small') %>
+        <% else %>
+          <%= image_tag("user.png", :class => 'avatar small') %>
+        <% end %>
       </a>
       <ul class="dropdown">
         <li><%= link_to "edit profile", '#' %></li>
