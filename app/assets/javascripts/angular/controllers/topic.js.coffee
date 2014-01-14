@@ -15,10 +15,9 @@
       alert 'you can only vote once'
 
   $scope.addIdea = ->
-    new Idea().create {
+    new Idea($scope.topic.secret).create {
       title: $scope.newIdea.title
       description: $scope.newIdea.description
-      topic_id: $scope.topic.secret
     }, (idea) ->
       $scope.topic.ideas.push idea
 

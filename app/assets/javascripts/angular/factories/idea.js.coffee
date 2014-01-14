@@ -1,8 +1,9 @@
 @Conduct.factory 'Idea', ($resource) ->
   class Idea
-    constructor: (id) ->
-      @service = $resource "/ideas/:id.json",
+    constructor: (topic, id) ->
+      @service = $resource "/topics/:topic/ideas/:id.json",
         id: id
+        topic: topic
       ,
         'update': method: 'PUT'
 
