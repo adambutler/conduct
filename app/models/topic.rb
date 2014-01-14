@@ -2,6 +2,8 @@ include ApplicationHelper
 
 class Topic < ActiveRecord::Base
 
+  belongs_to :user
+
   has_many :ideas, :primary_key => "secret"
   after_create :generate_secret
 

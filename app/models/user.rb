@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_secure_password(validations: false)
   validates_uniqueness_of :email
 
+  has_many :topics
+
   def access_token_reset
     generate_token(:access_token, 24)
     save!
