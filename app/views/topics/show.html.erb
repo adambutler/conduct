@@ -26,21 +26,28 @@
         <li class="sidebar-item-new-idea">
           <h3 class="icon-title"><i class="icon icon-mini_pencil"></i>Suggest an idea</h3>
 
-          <form name="new" ng-submit="addIdea()">
+          <% if current_user %>
+            <form name="new" ng-submit="addIdea()">
 
-            <div class="field">
-              <label for="idea_name">Name</label><br>
-              <input type="text" ng-model="newIdea.title" required>
-            </div>
-            <div class="field">
-              <label for="idea_description">Description</label><br>
-              <textarea type="text" ng-model="newIdea.description"></textarea>
-            </div>
-            <div class="actions">
-              <input type="submit" value="Create Idea" ng-disabled="new.$invalid">
+              <div class="field">
+                <label for="idea_name">Name</label><br>
+                <input type="text" ng-model="newIdea.title" required>
+              </div>
+              <div class="field">
+                <label for="idea_description">Description</label><br>
+                <textarea type="text" ng-model="newIdea.description"></textarea>
+              </div>
+              <div class="actions">
+                <input type="submit" value="Create Idea" ng-disabled="new.$invalid">
+              </div>
+
+            </form>
+          <% else %>
+            <div class="text-centered text-spacious">
+              <a href="/login" class="link-subtle">Log in to suggest an idea</a>
             </div>
 
-          </form>
+          <% end %>
 
         </li>
 
