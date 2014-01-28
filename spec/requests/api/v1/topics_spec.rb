@@ -96,14 +96,16 @@ describe "Topic API" do
 
         it "has exactly or less topics per request than the per_page parameter" do
           get "http://conduct.dev/api/v1/topics", params, headers
-          expect(JSON.parse(response.body).count).to <= 1
+          expect(JSON.parse(response.body).count).to be <= 2
         end
 
       end
 
       context "given a per_page param that is a string" do
 
-        let(:params) do { per_page: "220" } end
+        Rails.logger.debug "Running given a per_page param that is a string"
+
+        let(:params) do { per_page: "foo" } end
 
         it "has a 400 status code" do
           get "http://conduct.dev/api/v1/topics", params, headers
@@ -136,10 +138,33 @@ describe "Topic API" do
       context "not given a per_page param" do
 
         it "has exactly or less topics per request than the default per_page parameter" do
-          get "http://conduct.dev/api/v1/topics", params, headers
-          expect(JSON.parse(response.body).count).to <= 20
+          get "http://conduct.dev/api/v1/topics", nil, headers
+          expect(JSON.parse(response.body).count).to be <= 20
         end
 
+      end
+
+      context "not given a sort_field param" do
+
+        context "not given a sort_dir" do
+        
+          it "is sorted by created_at decending" do
+            get "http://conduct.dev/api/v1/topics", nil, headers
+
+            lastTopic = false
+
+            for topic in JSON.parse(response.body) do
+              if lastTopic != false
+                currentTopicTime = Time.new(topic["created_at"])
+                lastTopicTime = Time.new(lastTopic["created_at"])
+                expect(currentTopicTime).to be <= lastTopicTime 
+              end
+              lastTopic = topic
+            end
+          end
+        
+        end
+      
       end
 
     end

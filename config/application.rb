@@ -20,6 +20,8 @@ module Conduct
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.autoload_paths += Dir[File.join(Rails.root, "lib", "core_extensions", "*.rb")].each {|l| require l }
+
     config.app_generators do |g|
       g.test_framework :rspec, views: false, view_specs: false, helpers: false, helper_specs: false, routing_specs: false
       g.stylesheets false

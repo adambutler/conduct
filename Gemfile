@@ -48,6 +48,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener'
+  gem 'guard-rspec', require: false
 end
 
 group :development, :test do
@@ -64,3 +65,5 @@ gem 'redcarpet'
 gem 'pygmentize'
 
 gem 'gravatar_image_tag'
+
+gem 'will_paginate'

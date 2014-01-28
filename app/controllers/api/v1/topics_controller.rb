@@ -6,8 +6,11 @@ module Api
       before_action :set_topic, only: [:show, :edit, :update, :destroy]
       before_filter :validate_access_token
 
+      before_filter :check_per_page_is_an_integer, only: [:index]
+      before_filter :check_per_page_is_in_range, only: [:index]
+
       def index
-        @topics = @user.topics.order("#{sort_field} #{sort_dir}")
+        @topics = @user.topics.order("#{sort_field} #{sort_dir}").paginate(:page => params[:page], :per_page => params[:per_page])
         render 'topics/index'
       end
 
@@ -29,7 +32,7 @@ module Api
 
       def destroy
         @topic.destroy
-        render nothing: true, :status => :no_content
+        render nothing: true, status: :no_content
       end
 
       private
@@ -48,7 +51,7 @@ module Api
         end
 
         unless @user
-          render nothing: true, :status => :unauthorized
+          render nothing: true, status: :unauthorized
         end
       end
 
@@ -56,7 +59,7 @@ module Api
       def set_topic
         @topic = Topic.find_by_secret(params[:id])
         unless @topic
-          render nothing: true, :status => :not_found
+          render nothing: true, status: :not_found
         end
       end
 
@@ -64,6 +67,28 @@ module Api
       def topic_params
         params.require(:topic).permit(:title, :description, :locked)
       end
+
+      def check_per_page_is_an_integer
+        unless params["per_page"].nil?
+          unless params["per_page"].is_i?
+            render text: "Parameter per_page is not an integer", status: :bad_request
+          end
+        end
+      end
+
+      def check_per_page_is_in_range
+        per_page = params["per_page"] || 20
+        per_page = per_page.to_i
+
+        Rails.logger.debug "per_page = #{per_page}"
+        Rails.logger.debug "per_page in range = #{per_page.between?(1, 10000)}"
+
+        unless per_page.between?(1, 10000)
+          Rails.logger.debug "Throw a 400"
+          render text: "Parameter per_page is out of range", status: :bad_request
+        end
+      end
+
     end
   end
 end
