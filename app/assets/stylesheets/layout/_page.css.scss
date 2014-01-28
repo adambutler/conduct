@@ -9,6 +9,20 @@
   margin: 20px 0 0 260px;
   color: $navy;
 
+  @include medium-down {
+    margin-left: 180px;
+    zoom: 0.9;
+  }
+
+  @include tablet-down {
+    margin-left: 140px;
+    zoom: 0.71;
+  }
+
+  @include mobile-only {
+    display: none;
+  }
+
   .nav-bar {
     .avatar {
       width: 31px;

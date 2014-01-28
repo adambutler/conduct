@@ -30,7 +30,20 @@
             <div class="text">
               <h2 class="title">Get responses, votes &amp; suggestions</h2>
             </div>
-            <div class="page">
+
+            <!-- Mobile -->
+            <div class="inverse hide-tablet hide-desktop">
+              <h2 class="text-tight">Nearly Done... Login or Register</h2>
+              <form class="form" ng-submit="loginFormSubmited()">
+                <input ng-model="user.email" type="text" placeholder="Email">
+                <input ng-model="user.password" type="password" placeholder="Password">
+                <input name="bucket_hex" value="{{getRawHex()}}" style="display:none;">
+                <input type="submit" class="btn btn-block" value="Login / Register">
+              </form>
+            </div>
+
+            <!-- Desktop -->
+            <div class="page hide-mobile">
               <nav class="nav-bar">
                 <div class="logo">Conduct.io</div>
                 <a href="#">My topics</a>

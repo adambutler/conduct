@@ -2,6 +2,12 @@
   @include clearfix;
 }
 
+.clearfix-alt {
+  display: inline-block;
+  width: 100%;
+  zoom: 1; /* new block formatting context via hasLayout for IE 6/7 */
+}
+
 .hide {
   display: none;
 }
@@ -21,6 +27,10 @@ html {
 .container {
   width: 940px;
   margin: auto;
+
+  @media all and (max-width: $screen-tablet) {
+    width: auto;
+  }
 }
 
 .body {

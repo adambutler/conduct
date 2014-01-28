@@ -74,4 +74,14 @@ span.customSelect {
   .btn {
     width: 170px;
   }
+
+  @include tablet-down {
+    width: auto;
+
+    input {
+      width: 100%;
+      max-width: 430px;
+      box-sizing: border-box;
+    }
+  }
 }

@@ -5,12 +5,17 @@ footer.main {
   text-align: center;
   color: $white;
   background: $navy;
-  padding: 20px 0;
+  padding: 20px;
 
   p {
     font-weight: bold;
     small {
       font-weight: normal;
     }
+  }
+
+  @include mobile-only {
+    font-size: 0.8em;
+    height: 68px;
   }
 }

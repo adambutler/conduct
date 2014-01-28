@@ -1,3 +1,9 @@
+$screen-mobile: 500px;
+$screen-tablet: 768px;
+$screen-medium: 940px;
+$screen-large: 1200px;
+$screen-xl: 1600px;
+
 $default-border-radius: 7px;  
 
 $orange: #f29b2c;
@@ -30,6 +36,7 @@ $xl: 1200px;
 
 @import "mixins";
 @import "icons";
+@import "screen";
 
 @import "core";
 @import "grid";
@@ -53,6 +60,7 @@ $xl: 1200px;
 @import "components/action-bar";
 @import "components/menu";
 @import "components/switch";
+@import "components/inverse";
 
 @import "layout/header";
 @import "layout/footer";

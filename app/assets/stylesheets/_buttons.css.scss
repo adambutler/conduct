@@ -8,6 +8,10 @@
   border: none;
   font-size: 1em;
 
+  @include tablet-down {
+    padding: 15px;
+  }
+
   &.twitter {
     background: $color-twitter;
   }

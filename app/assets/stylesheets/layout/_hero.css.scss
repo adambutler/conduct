@@ -7,9 +7,22 @@
   color: $navy;
   padding-top: 20px;
 
+  @media all and (max-width: $screen-medium) {
+    padding: 20px 20px 0 20px;
+  }
+
+  .inverse {
+    text-align: center;
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      margin: 5px 0;
+    }
+  }
+
   > .container > ul {
     > li {
-      @extend .clearfix;
+      @extend .clearfix-alt;
       margin-bottom: 20px;
       .number {
         @include transition(opacity 1s ease-in-out);
@@ -27,12 +40,54 @@
         font-size: 80px;
         text-align: center;
         background: $navy;
+
+        @media all and (max-width: $screen-tablet) {
+          width: 80px;
+          height: 80px;
+          font-size: 60px;
+          line-height: 80px;
+        }
+
+        @media all and (max-width: $screen-mobile) {
+          float: none;
+          margin: 0 auto;
+        }
+      }
+
+      .text {
+
+        input {
+          @media all and (max-width: $screen-tablet) {
+            width: 330px;
+          }
+
+          @media all and (max-width: $screen-mobile) {
+            width: 100%;
+            box-sizing: border-box;
+          }
+        }
+
+        @media all and (max-width: $screen-mobile) {
+          text-align: center;
+        }
       }
 
       &:nth-child(2) {
         .number, .text {
           margin-left: 70px;
           opacity: 0.75;
+
+          @media all and (max-width: $screen-medium) {
+            margin-left: 20px;
+          }
+
+          @media all and (max-width: $screen-tablet) {
+            margin-left: 0px;
+          }
+
+          @media all and (max-width: $screen-mobile) {
+            margin-left: auto;
+          }
         }
       }
 
@@ -41,6 +96,18 @@
         .number, .text {
           margin-left: 140px;
           opacity: 0.5;
+
+          @media all and (max-width: $screen-medium) {
+            margin-left: 40px;
+          }
+
+          @media all and (max-width: $screen-tablet) {
+            margin-left: 0px;
+          }
+
+          @media all and (max-width: $screen-mobile) {
+            margin-left: auto;
+          }
         } 
       }
     }

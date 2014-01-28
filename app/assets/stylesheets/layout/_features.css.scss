@@ -18,3 +18,13 @@
     }
   }
 }
+
+@include tablet-down {
+  .features .row {
+    text-align: center;
+    .span4 {
+      display: inline-block;
+      float: none;
+    }
+  }
+}
