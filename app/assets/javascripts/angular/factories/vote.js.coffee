@@ -1,7 +1,7 @@
 @Conduct.factory 'Vote', ($resource) ->
   class Vote
     constructor: (id) ->
-      @service = $resource "/votes/:id.json",
+      @service = $resource "/api/v1/votes/:id.json",
         id: id
       ,
         'update': method: 'PUT'

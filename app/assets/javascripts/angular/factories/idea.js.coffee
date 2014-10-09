@@ -1,7 +1,7 @@
 @Conduct.factory 'Idea', ($resource) ->
   class Idea
     constructor: (topic, id) ->
-      @service = $resource "/topics/:topic/ideas/:id.json",
+      @service = $resource "/api/v1/topics/:topic/ideas/:id.json",
         id: id
         topic: topic
       ,

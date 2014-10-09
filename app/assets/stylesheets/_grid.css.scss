@@ -18,9 +18,18 @@
 .row-fluid {
   .column-left {
     margin-right: 340px;
+
+    @include tablet-down {
+      margin-right: 0;
+    }
   }
 
   .column-right {
     width: 320px; float: right;
+
+    @include tablet-down {
+      float: none;
+      width: auto;
+    }
   }
 }

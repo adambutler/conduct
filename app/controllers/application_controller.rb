@@ -4,8 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   private
+  
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+
+    if request.headers["X-API-Key"]
+      @user = User.find_by_access_token(request.headers["X-API-Key"])
+    elsif session[:user_id]
+      @current_user ||= User.find(session[:user_id])
+    end
   end
+
   helper_method :current_user
 end

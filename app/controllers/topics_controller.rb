@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+
+  before_filter :authenticate
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   # GET /topics
@@ -62,6 +64,10 @@ class TopicsController < ApplicationController
   end
 
   private
+  
+  def authenticate
+    redirect_to(login_path) unless !current_user.nil?
+  end
   
   # Use callbacks to share common setup or constraints between actions.
   def set_topic

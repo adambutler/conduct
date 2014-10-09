@@ -53,6 +53,12 @@ img {
   margin-bottom: 15px;
   .labels {
     @include position(absolute, 0px 0px 0 0);
+
+    @include tablet-down {
+      position: static;
+      padding: 20px 0;
+    }
+
   }
 }
 

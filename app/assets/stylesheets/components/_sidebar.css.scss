@@ -5,6 +5,23 @@
     padding-left: 20px;
     margin-bottom: 20px;
 
+    @include tablet-down {
+      min-width: 315px;
+      float: left;
+    }
+
+    @media screen and (max-width: 717px) {
+      min-width: 0px;
+      width: auto;
+      float: none;
+      border-left: none;
+      padding-left: 0;
+
+      &.sidebar-item-chart {
+        display: none;
+      }
+    }
+
     canvas {
       position: relative;
       left: -15px;

@@ -4,7 +4,8 @@ module Api
 
       respond_to :json
       before_action :set_topic, only: [:show, :edit, :update, :destroy]
-      before_filter :validate_access_token
+
+      before_filter :authenticate, except: [:create]
 
       before_filter :check_per_page_is_an_integer, only: [:index]
       before_filter :check_per_page_is_in_range, only: [:index]
@@ -20,7 +21,7 @@ module Api
 
       def create
         @topic = Topic.new(topic_params)
-        @topic.user_id = @user.id
+        @topic.user_id = @user.id if @user
         @topic.save
         render 'topics/show', status: :created, location: @topic
       end
@@ -45,10 +46,8 @@ module Api
         %w{asc desc}.include?(params[:sort_dir]) ? params[:sort_dir] : 'desc'
       end
 
-      def validate_access_token
-        if request.headers["X-API-Key"]
-          @user = User.find_by_access_token(request.headers["X-API-Key"])
-        end
+      def authenticate
+        @user = current_user
 
         unless @user
           render nothing: true, status: :unauthorized
@@ -65,7 +64,7 @@ module Api
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def topic_params
-        params.require(:topic).permit(:title, :description, :locked)
+        params.require(:topic).permit(:title, :description, :locked, :user_id)
       end
 
       def check_per_page_is_an_integer

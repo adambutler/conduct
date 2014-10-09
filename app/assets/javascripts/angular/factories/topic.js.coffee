@@ -1,7 +1,7 @@
 @Conduct.factory 'Topic', ($resource) ->
   class Topic
     constructor: (secret) ->
-      @service = $resource "/topics/:secret.json",
+      @service = $resource "/api/v1/topics/:secret.json",
         secret: secret || '@secret'
       ,
         'update': method: 'PUT'
