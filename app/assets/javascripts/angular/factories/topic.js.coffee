@@ -1,4 +1,4 @@
-@Conduct.factory 'Topic', ($resource) ->
+@Conduct.factory 'Topic', ["$resource", ($resource) ->
   class Topic
     constructor: (secret) ->
       @service = $resource "/api/v1/topics/:secret.json",
@@ -15,3 +15,4 @@
 
     get: ->
       @service.get()
+]

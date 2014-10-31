@@ -1,4 +1,4 @@
-@Conduct.factory 'Vote', ($resource) ->
+@Conduct.factory 'Vote', ["$resource", ($resource) ->
   class Vote
     constructor: (id) ->
       @service = $resource "/api/v1/votes/:id.json",
@@ -15,3 +15,4 @@
 
     get: ->
       @service.get()
+]

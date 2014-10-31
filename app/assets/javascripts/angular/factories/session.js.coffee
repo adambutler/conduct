@@ -1,4 +1,4 @@
-@Conduct.factory 'Session', ($resource) ->
+@Conduct.factory 'Session', ["$resource", ($resource) ->
   class Session
     constructor: ->
       @service = $resource "/sessions/:id.json",
@@ -11,3 +11,4 @@
 
     all: ->
       @service.query()
+]
